@@ -8,3 +8,7 @@ With this call, you can search for all the movies related to a query. Pass query
 
 ### Milestone 0:
 **Design the application structure using props, custom events, and global state (store.js), based on the experience of previous exercises.**
+- Create components AppHeader, AppMainand AppFooter.
+- Create utils components: SearchMoviesInput
+- Import 3 macro components in App.vue
+- Import SearchMoviesInput component in AppHeader

@@ -1,4 +1,7 @@
 <script>
+//Import components
+import SearchMoviesInput from './SearchMoviesInput.vue';
+
 export default {
     data() {
         return {
@@ -7,7 +10,7 @@ export default {
     },
 
     components: {
-
+        SearchMoviesInput,
     },
 
     methods: {
@@ -17,6 +20,7 @@ export default {
 </script>
 
 <template>
+    <SearchMoviesInput />
 </template>
 
 <style lang='scss' scoped></style>
