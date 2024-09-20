@@ -18,7 +18,7 @@ export default {
     methods: {
 
     }
-};
+};  
 </script>
 
 <template>
@@ -27,7 +27,10 @@ export default {
             :key="searchedResult.id">
             <li class="list-group-item">Title: {{ searchedResult.title }}</li>
             <li class="list-group-item">Original Title: {{ searchedResult.original_title }}</li>
-            <li class="list-group-item">Language: {{ searchedResult.original_language }}</li>
+            <li class="list-group-item">
+                Language: <span :class="`fi fi-${searchedResult.original_language}`"></span>
+                {{ searchedResult.original_language }}
+            </li>
             <li class="list-group-item">Rating: {{ searchedResult.vote_average }}</li>
         </ul>
     </div>
@@ -35,4 +38,5 @@ export default {
 
 <style lang='scss' scoped>
 @use "/node_modules/bootstrap/scss/bootstrap.scss";
+@use "/node_modules/flag-icons/css/flag-icons.min.css";
 </style>

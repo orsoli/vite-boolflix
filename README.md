@@ -36,3 +36,19 @@ After the API response, we want to display the following values for each movie f
 - Import InfoMovieCard component in AppMain
 - Store the results in store.js file and use in InfoMoviesCard and other files if is necessary.
 - In InfoMoviesCard crate a card elements and use v-if searchedResults to show if we have started to search and v-for to show for each result all info we need
+
+### Milestone 2:
+**Let’s transform the static language string into an actual flag of the corresponding country, managing the case where we don’t have the flag of the country returned by the API (flags are not available in FontAwesome).
+Then expand the search to include TV series. With the same search action, we should retrieve both the movies that match and the TV series, being careful to have similar values in the end (TV series and movies have different fields in the JSON response, similar but not always identical).
+Here’s an example of a call for TV series:
+https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query=scrubs.**
+
+- Install flag-icons library in node_modules and use in style.
+
+    `npm i flag-icons`
+    
+    `@use "/node_modules/flag-icons/css/flag-icons.min.css";`
+
+- Add span element with flag content with dinamically class.
+
+    ``` <span :class="`fi fi-${searchedResult.original_language}`"></span> ```
