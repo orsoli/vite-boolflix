@@ -1,4 +1,7 @@
 <script>
+// Import components
+import InfoMoviesCard from './InfoMoviesCard.vue';
+
 export default {
     data() {
         return {
@@ -7,7 +10,7 @@ export default {
     },
 
     components: {
-
+        InfoMoviesCard,
     },
 
     methods: {
@@ -17,6 +20,9 @@ export default {
 </script>
 
 <template>
+    <InfoMoviesCard />
 </template>
 
-<style lang='scss' scoped></style>
+<style lang='scss' scoped>
+@use "/node_modules/bootstrap/scss/bootstrap.scss";
+</style>

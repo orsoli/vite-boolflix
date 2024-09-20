@@ -2,5 +2,6 @@
 import { reactive } from "vue";
 
 export const store = reactive({
-  // Here Variables
+  //  Variables
+  searchedResults: [], // Store searched results
 });
