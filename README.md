@@ -62,3 +62,17 @@ https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&
 - Use `v-for` directive in Tv section to iterate each object in `searchedTvResults` array.
 - In `@keyup` and `@click` events call back `getSearchedResults()` arrow function
 
+
+### Milestone 3: 
+**In this milestone, the first thing we add is the cover of the movie or series to our list. The API only gives us the final part of the URL, as we can generate many different sizes from that portion of the URL. We need to get the base URL of the images from TMDB:
+https://image.tmdb.org/t/p/ and then add the size we want to generate (we can find all the possible sizes at this link:
+https://www.themoviedb.org/talk/53c11d4ec3a3684cf4006400) and then add the final part of the URL sent by the API.**
+
+**Then, we transform the rating from a decimal number between 1 and 10 into an integer between 1 and 5, so that we can print a number of full stars from 1 to 5 on the screen, leaving the remaining ones empty (we can find the icons in FontAwesome).
+We always round up to the next whole number, and we don’t handle half-full (or half-empty
+) icons.**
+
+- Create in `store.js` file a variable to store the base images url: https://image.tmdb.org/t/p/
+- Add in Movie and Tv list `<img src="" />` element in `<InfoMoviesCard>` component
+- Add dinamically in `:src` attribute the value: images url get from `store.js` + size of img eg. `/w500` + `backdrop_path:` of movie or tv get from `searchedMovieResults` or `searchedTvResults` array's object variable.
+

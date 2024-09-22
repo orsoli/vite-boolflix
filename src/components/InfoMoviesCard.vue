@@ -38,6 +38,9 @@ export default {
                             {{ searchedResult.original_language }}
                         </li>
                         <li class="list-group-item">Rating: {{ searchedResult.vote_average }}</li>
+                        <li class="list-group-item"><img :src="`${store.imageUrl}${searchedResult.backdrop_path}`"
+                                :alt="`${searchedResult.original_title} cover`">
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -52,13 +55,16 @@ export default {
             <div class="col" v-for="searchedResult in store.searchedTvResults" :key="searchedResult.id">
                 <div class="card">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Title: {{ searchedResult.title }}</li>
-                        <li class="list-group-item">Original Title: {{ searchedResult.original_title }}</li>
+                        <li class="list-group-item">Title: {{ searchedResult.name }}</li>
+                        <li class="list-group-item">Original Title: {{ searchedResult.original_name }}</li>
                         <li class="list-group-item">
                             Language: <span :class="`fi fi-${searchedResult.original_language}`"></span>
                             {{ searchedResult.original_language }}
                         </li>
                         <li class="list-group-item">Rating: {{ searchedResult.vote_average }}</li>
+                        <li class="list-group-item"><img :src="`${store.imageUrl}${searchedResult.backdrop_path}`"
+                                :alt="`${searchedResult.original_title} cover`">
+                        </li>
                     </ul>
                 </div>
             </div>
