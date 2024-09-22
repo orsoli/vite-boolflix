@@ -7,6 +7,9 @@ import { store } from '../js/store';
 export default {
     data() {
         return {
+            // Varables
+            stars: 0, // Stars number variable
+            //Store
             store,
         };
     },
@@ -16,7 +19,10 @@ export default {
     },
 
     methods: {
-
+        // Convert rating value get from url to the integer from 0-5
+        ratingStarsNumber(ratingNumber) {
+            this.stars = Math.round(ratingNumber / 2) // Asigne stars variable
+        }
     }
 };  
 </script>
@@ -37,7 +43,15 @@ export default {
                             Language: <span :class="`fi fi-${searchedResult.original_language}`"></span>
                             {{ searchedResult.original_language }}
                         </li>
-                        <li class="list-group-item">Rating: {{ searchedResult.vote_average }}</li>
+                        <li class="list-group-item">
+                            <div class="no-stars" v-if="searchedResult.vote_average === 0">
+                                <p>No stars rating</p>
+                            </div>
+                            <div class="rating-star" v-else>
+                                <i class="bi bi-star-fill" v-for="i in Math.round(searchedResult.vote_average / 2)"
+                                    :key="i"></i>
+                            </div>
+                        </li>
                         <li class="list-group-item"><img :src="`${store.imageUrl}${searchedResult.backdrop_path}`"
                                 :alt="`${searchedResult.original_title} cover`">
                         </li>
@@ -61,7 +75,15 @@ export default {
                             Language: <span :class="`fi fi-${searchedResult.original_language}`"></span>
                             {{ searchedResult.original_language }}
                         </li>
-                        <li class="list-group-item">Rating: {{ searchedResult.vote_average }}</li>
+                        <li class="list-group-item">
+                            <div class="no-stars" v-if="searchedResult.vote_average === 0">
+                                <p>No stars rating</p>
+                            </div>
+                            <div class="rating-star" v-else>
+                                <i class="bi bi-star-fill" v-for="i in Math.round(searchedResult.vote_average / 2)"
+                                    :key="i"></i>
+                            </div>
+                        </li>
                         <li class="list-group-item"><img :src="`${store.imageUrl}${searchedResult.backdrop_path}`"
                                 :alt="`${searchedResult.original_title} cover`">
                         </li>
@@ -74,9 +96,14 @@ export default {
 
 <style lang='scss' scoped>
 @use "/node_modules/bootstrap/scss/bootstrap.scss";
+@use "/node_modules/bootstrap-icons/font/bootstrap-icons.css";
 @use "/node_modules/flag-icons/css/flag-icons.min.css";
 
 .card {
     width: 400px;
+
+    .bi-star-fill {
+        color: goldenrod;
+    }
 }
 </style>

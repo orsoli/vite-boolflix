@@ -75,4 +75,7 @@ We always round up to the next whole number, and we don’t handle half-full (or
 - Create in `store.js` file a variable to store the base images url: https://image.tmdb.org/t/p/
 - Add in Movie and Tv list `<img src="" />` element in `<InfoMoviesCard>` component
 - Add dinamically in `:src` attribute the value: images url get from `store.js` + size of img eg. `/w500` + `backdrop_path:` of movie or tv get from `searchedMovieResults` or `searchedTvResults` array's object variable.
+- Ceate `star` variable to store stars number.
+- Define arrow function to store, integer from 0 to 5 using `Math.round(rating/2)` method, in `stars` variable.
+- `li`in `InfoMoviesCard` component, create a `div` element contained stars icons list and use `v-for` directive based on stars number.
 
