@@ -20,7 +20,9 @@ export default {
 </script>
 
 <template>
-    <InfoMoviesCard />
+    <main>
+        <InfoMoviesCard />
+    </main>
 </template>
 
 <style lang='scss' scoped>

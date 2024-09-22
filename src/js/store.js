@@ -3,5 +3,6 @@ import { reactive } from "vue";
 
 export const store = reactive({
   //  Variables
-  searchedResults: [], // Store searched results
+  searchedMovieResults: [], // Store searched Movie results
+  searchedTvResults: [], // Store searched Tv results
 });

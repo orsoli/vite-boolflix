@@ -8,10 +8,10 @@ With this call, you can search for all the movies related to a query. Pass query
 
 ### Milestone 0:
 **Design the application structure using props, custom events, and global state (store.js), based on the experience of previous exercises.**
-- Create components AppHeader, AppMainand AppFooter.
-- Create utils components: SearchMoviesInput
-- Import 3 macro components in App.vue
-- Import SearchMoviesInput component in AppHeader
+- Create components `<AppHeader />`, `<AppMain />`  and `<AppFooter />`.
+- Create utils components: `<SearchMoviesInput />`
+- Import 3 macro components in `<App.vue />`
+- Import `<SearchMoviesInput />` component in AppHeader
 
 ### Milestone 1:
 **Create a basic layout with a searchbar (input and button), where we can write the name of a movie, either fully or partially.
@@ -28,14 +28,14 @@ After the API response, we want to display the following values for each movie f
 
 - Added input form type text with a button
 - Create variables to store the url, values gets from user inputs and searched result get from API call
-- Use v-model directive in input element and link whith  searchInputResult
-- Create a function in methods to call Api and get searching results using axios, store in searchedResult variable
-- Use api_key and query params in axios function. value of query is the searchInputResult value
-- Create @click event in buton and @keyup in input to and call back the getsearchedResults function
-- Create in an InfoMovieCard component geting infos the title, original title language and rating from the searchMoviesInput component
-- Import InfoMovieCard component in AppMain
-- Store the results in store.js file and use in InfoMoviesCard and other files if is necessary.
-- In InfoMoviesCard crate a card elements and use v-if searchedResults to show if we have started to search and v-for to show for each result all info we need
+- Use `v-model` directive in input element and link whith  `searchInputResult` variable
+- Create a function in methods to call Api and get searching results using axios, store in `searchedMovieResults` variable
+- Use `api_key` and `query` params in axios function. value of query is the `searchInputResult` value
+- Create `@click` event in buton and `@keyup` in input to and call back the `getsearchedMovieResults` function
+- Create in an `<InfoMovieCard />` component geting infos the title, original title language and rating from the searchMoviesInput component
+- Import `<InfoMovieCard />` component in AppMain
+- Store the results in `store.js` file and use in `<InfoMoviesCard />` and other files if is necessary.
+- In `<InfoMoviesCard />` crate a card elements and use `v-if` searchedResults to show if we have started to search and v-for to show for each result all info we need
 
 ### Milestone 2:
 **Let’s transform the static language string into an actual flag of the corresponding country, managing the case where we don’t have the flag of the country returned by the API (flags are not available in FontAwesome).
@@ -46,9 +46,19 @@ https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&
 - Install flag-icons library in node_modules and use in style.
 
     `npm i flag-icons`
-    
+
     `@use "/node_modules/flag-icons/css/flag-icons.min.css";`
 
 - Add span element with flag content with dinamically class.
 
     ``` <span :class="`fi fi-${searchedResult.original_language}`"></span> ```
+
+- Centralize the `getSearchedMovieResult()` to be more usable. Added parameters `url`, `search` to expect 2 arguments: api Url and searched results.
+- Define one more arrow function `getSearchTvResults()` calling API search tv series
+- Define a new function `getSearchedResults()` to call back all searched functions.
+- Create a variable to save tv url `searchTvUrl` and in store.js one more to save tv searched results `searchedTvResults`.
+- Add one more section in `<InfoMoviesCard />` component for tv series in html's field showing tv series.
+- Use `v-for` directive in Movie section to iterate each object in `searchedMovieResults()` array.
+- Use `v-for` directive in Tv section to iterate each object in `searchedTvResults` array.
+- In `@keyup` and `@click` events call back `getSearchedResults()` arrow function
+

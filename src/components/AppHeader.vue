@@ -20,7 +20,12 @@ export default {
 </script>
 
 <template>
-    <SearchMoviesInput />
+    <header class="container d-flex justify-content-between align-items-center">
+        <div>
+            logo
+        </div>
+        <SearchMoviesInput />
+    </header>
 </template>
 
 <style lang='scss' scoped></style>
