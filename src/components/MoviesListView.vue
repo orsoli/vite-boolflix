@@ -24,7 +24,7 @@ export default {
 
 <template>
     <!-- Movie section  -->
-    <div class="container">
+    <div class="container mb-5">
         <h1>
             Movies
         </h1>
@@ -32,7 +32,7 @@ export default {
             <div class="col" v-for="searchedResult in store.searchedMovieResults" :key="searchedResult.id">
                 <InfoMediaCard :title="searchedResult.title" :original-title="searchedResult.original_title"
                     :language="searchedResult.original_language" :rates="searchedResult.vote_average"
-                    :back-drop-path="searchedResult.backdrop_path" :image-url="store.imageUrl" />
+                    :back-drop-path="searchedResult.poster_path" :image-url="store.imageUrl" />
             </div>
         </div>
     </div>

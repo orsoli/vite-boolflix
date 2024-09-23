@@ -8,5 +8,5 @@ export const store = reactive({
   // Url's Variables
   searchMovieUrl: "https://api.themoviedb.org/3/search/movie", // Store search Movies url
   searchSeriesTvUrl: "https://api.themoviedb.org/3/search/tv", // Store search Tv url
-  imageUrl: "https://image.tmdb.org/t/p/w500", // Store search Image url
+  imageUrl: "https://image.tmdb.org/t/p/w342", // Store search Image url
 });

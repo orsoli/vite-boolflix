@@ -69,3 +69,14 @@ We always round up to the next whole number, and we don’t handle half-full (or
 - Define arrow function to store, integer from 0 to 5 using `Math.round(rating/2)` method, in `stars` variable.
 - `li`in `InfoMediaCard` component, create a `div` element contained stars icons list and use `v-for` directive based on stars number.
 
+### Milestone 4: 
+**We transform what we have done so far into a real web app by creating a complete Netflix-like layout:**
+
+**- A header that contains the logo and a search bar.**
+
+**- After searching for something in the search bar, the results appear as "cards" where the background is represented by the cover image (recommended poster_path with w342).**
+
+**- When hovering over a card, additional information that was previously fetched, along with the overview, appears.**
+
+- Edit in `InfoMediaCard` card style and added postres path instead of backDrop path
+

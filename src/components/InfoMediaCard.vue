@@ -46,25 +46,27 @@ export default {
 </script>
 
 <template>
-    <div class="card">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Title: {{ title }}</li>
-            <li class="list-group-item">Original Title: {{ originalTitle }}</li>
-            <li class="list-group-item">
-                Language: <span :class="`fi fi-${language}`"></span>
+    <div class="card-info d-none">
+        <ul class="list-unstyled">
+            <li><strong>Title:</strong> {{ title }}</li>
+            <li><strong>Original Title: </strong> {{ originalTitle }}</li>
+            <li>
+                <strong>Language:</strong> <span :class="`fi fi-${language}`"></span>
                 {{ language }}
             </li>
-            <li class="list-group-item">
+            <li>
                 <div class="no-stars" v-if="rates === 0">
                     <p>No stars rating</p>
                 </div>
                 <div class="rating-star" v-else>
-                    <i class="bi bi-star-fill" v-for="i in Math.round(rates / 2)" :key="i"></i>
+                    <span><strong>Rates:</strong></span> <i class="bi bi-star-fill" v-for="i in Math.round(rates / 2)"
+                        :key="i"></i>
                 </div>
             </li>
-            <li class="list-group-item"><img :src="`${imageUrl}${backDropPath}`" :alt="`${originalTitle} cover`">
-            </li>
         </ul>
+    </div>
+    <div class="poser">
+        <img :src="`${imageUrl}${backDropPath}`" :alt="`${originalTitle} cover`">
     </div>
 </template>
 
@@ -73,17 +75,17 @@ export default {
 @use "/node_modules/bootstrap-icons/font/bootstrap-icons.css";
 @use "/node_modules/flag-icons/css/flag-icons.min.css";
 
-.card {
-    width: 400px;
+.card-info {
 
     .bi-star-fill {
         color: goldenrod;
     }
 
-    img {
-        max-width: 100%;
-        border: 1px solid black;
-        border-radius: 5px;
-    }
+}
+
+img {
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 </style>

@@ -85,7 +85,6 @@ export default {
             </div>
             <div class="search-field d-flex gap-1">
                 <BaseInput placeholder="Search Movies or Series TV" @input-event="getSearchedResults" />
-                <BaseButton text="Search" @click-event="getSearchedResults(this.searchValue)" />
             </div>
         </div>
     </header>

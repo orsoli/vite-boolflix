@@ -22,7 +22,7 @@ export default {
 </script>
 
 <template>
-    <main>
+    <main class="text-white py-2">
         <MoviesListView />
         <SeriesTvListView />
     </main>
@@ -30,4 +30,8 @@ export default {
 
 <style lang='scss' scoped>
 @use "/node_modules/bootstrap/scss/bootstrap.scss";
+
+main {
+    background-color: #434343;
+}
 </style>
