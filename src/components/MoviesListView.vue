@@ -2,12 +2,17 @@
 //Import store
 import { store } from '../js/store';
 
+// Import Axios
+import axios from 'axios';
+
 // Import Components
 import InfoMediaCard from './InfoMediaCard.vue';
 
 export default {
     data() {
         return {
+            // Variables
+            topRatedMoviesUrl: "https://api.themoviedb.org/3/movie/top_rated", // Top rated movies url
             store
         };
     },
@@ -17,7 +22,26 @@ export default {
     },
 
     methods: {
+        getTopRatedMovie() {
+            axios.get(this.topRatedMoviesUrl, {
+                params: {
+                    api_key: "da70f1679892aee02a44255296352973",
+                }
+            }).then((response) => {
+                store.searchedMovieResults = response.data.results // Store movie search results
+            })
+                .catch((error) => {
+                    console.log(error); // Print errors in console
+                })
+                .finally(() => {
+                    console.log("Geting api top rated Movies is finished") // Print message after api riturn results
+                });
+        },
 
+    },
+
+    created() {
+        this.getTopRatedMovie()
     }
 };
 </script>

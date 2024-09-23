@@ -30,7 +30,7 @@ export default {
 </script>
 
 <template>
-    <input type="text" class="form-control" :placeholder="placeholder" v-model="this.inputResult"
+    <input type="text" class="form-control" :placeholder="placeholder" v-model.trim="this.inputResult"
         @keyup="onChangeHandling(this.inputResult)">
 </template>
 

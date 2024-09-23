@@ -2,12 +2,18 @@
 //Import store
 import { store } from '../js/store';
 
+// Import Axios
+import axios from 'axios';
+
 // Import Components
 import InfoMediaCard from './InfoMediaCard.vue';
 
 export default {
     data() {
         return {
+            // Variables
+            topRatedSeriesTvUrl: "https://api.themoviedb.org/3/tv/top_rated", // Top rated series Tv url
+
             store
         };
     },
@@ -17,7 +23,27 @@ export default {
     },
 
     methods: {
+        getTopRatedSeriesTv() {
+            axios.get(this.topRatedSeriesTvUrl, {
+                params: {
+                    api_key: "da70f1679892aee02a44255296352973",
+                }
+            }).then((response) => {
+                store.searchedSeriesTvResults = response.data.results // Store movie search results
+                console.log(store.searchedMovieResults); // Test print in console
+            })
+                .catch((error) => {
+                    console.log(error); // Print errors in console
+                })
+                .finally(() => {
+                    console.log("Geting api top rated Movies is finished") // Print message after api riturn results
+                });
+        },
 
+    },
+
+    created() {
+        this.getTopRatedSeriesTv()
     }
 };
 </script>
