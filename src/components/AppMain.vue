@@ -1,6 +1,7 @@
 <script>
 // Import components
-import InfoMoviesCard from './InfoMoviesCard.vue';
+import MoviesListView from './MoviesListView.vue';
+import SeriesTvListView from './SeriesTvListView.vue';
 
 export default {
     data() {
@@ -10,7 +11,8 @@ export default {
     },
 
     components: {
-        InfoMoviesCard,
+        MoviesListView,
+        SeriesTvListView,
     },
 
     methods: {
@@ -21,7 +23,8 @@ export default {
 
 <template>
     <main>
-        <InfoMoviesCard />
+        <MoviesListView />
+        <SeriesTvListView />
     </main>
 </template>
 

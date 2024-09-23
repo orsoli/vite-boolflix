@@ -9,9 +9,10 @@ With this call, you can search for all the movies related to a query. Pass query
 ### Milestone 0:
 **Design the application structure using props, custom events, and global state (store.js), based on the experience of previous exercises.**
 - Create components `<AppHeader />`, `<AppMain />`  and `<AppFooter />`.
-- Create utils components: `<SearchMoviesInput />`
+- Create generic components: `<BaseInput />` and `<BaseButton />`
 - Import 3 macro components in `<App.vue />`
-- Import `<SearchMoviesInput />` component in AppHeader
+- Import based components `<BaseInput />` and `<BaseButton />` in AppHeader
+- Create `store.js` file to store variables globaly
 
 ### Milestone 1:
 **Create a basic layout with a searchbar (input and button), where we can write the name of a movie, either fully or partially.
@@ -26,16 +27,11 @@ After the API response, we want to display the following values for each movie f
 
 **- Rating**
 
-- Added input form type text with a button
-- Create variables to store the url, values gets from user inputs and searched result get from API call
-- Use `v-model` directive in input element and link whith  `searchInputResult` variable
-- Create a function in methods to call Api and get searching results using axios, store in `searchedMovieResults` variable
-- Use `api_key` and `query` params in axios function. value of query is the `searchInputResult` value
-- Create `@click` event in buton and `@keyup` in input to and call back the `getsearchedMovieResults` function
-- Create in an `<InfoMovieCard />` component geting infos the title, original title language and rating from the searchMoviesInput component
-- Import `<InfoMovieCard />` component in AppMain
-- Store the results in `store.js` file and use in `<InfoMoviesCard />` and other files if is necessary.
-- In `<InfoMoviesCard />` crate a card elements and use `v-if` searchedResults to show if we have started to search and v-for to show for each result all info we need
+- From `AppHeader` component call based components in `<template>` element and listen event emited from components
+- In `AppHeader` define functions to call Api and save info in `store.js` in events emited from `<BaseInput />` and `<BaseButton />`.
+- Create a component card `InfoMediaCard` to show dinamically info movies or series tv get info from props.
+- Create components to show list Movies and Series Tv: `MoviesListView` and `SeriesListView`.
+- Call `InfoMediaCard` component in `MoviesListView` and get the props dinamically get from `store.js`.
 
 ### Milestone 2:
 **Let’s transform the static language string into an actual flag of the corresponding country, managing the case where we don’t have the flag of the country returned by the API (flags are not available in FontAwesome).
@@ -53,14 +49,8 @@ https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&
 
     ``` <span :class="`fi fi-${searchedResult.original_language}`"></span> ```
 
-- Centralize the `getSearchedMovieResult()` to be more usable. Added parameters `url`, `search` to expect 2 arguments: api Url and searched results.
-- Define one more arrow function `getSearchTvResults()` calling API search tv series
-- Define a new function `getSearchedResults()` to call back all searched functions.
-- Create a variable to save tv url `searchTvUrl` and in store.js one more to save tv searched results `searchedTvResults`.
-- Add one more section in `<InfoMoviesCard />` component for tv series in html's field showing tv series.
-- Use `v-for` directive in Movie section to iterate each object in `searchedMovieResults()` array.
-- Use `v-for` directive in Tv section to iterate each object in `searchedTvResults` array.
-- In `@keyup` and `@click` events call back `getSearchedResults()` arrow function
+- Call `InfoMediaCard` component in `SeriesTvListView` and get the props dinamically get from `store.js`.
+
 
 
 ### Milestone 3: 
@@ -73,9 +63,9 @@ We always round up to the next whole number, and we don’t handle half-full (or
 ) icons.**
 
 - Create in `store.js` file a variable to store the base images url: https://image.tmdb.org/t/p/
-- Add in Movie and Tv list `<img src="" />` element in `<InfoMoviesCard>` component
+- Add in Movie and Tv list `<img src="" />` element in `<InfoMediaCard>` component
 - Add dinamically in `:src` attribute the value: images url get from `store.js` + size of img eg. `/w500` + `backdrop_path:` of movie or tv get from `searchedMovieResults` or `searchedTvResults` array's object variable.
 - Ceate `star` variable to store stars number.
 - Define arrow function to store, integer from 0 to 5 using `Math.round(rating/2)` method, in `stars` variable.
-- `li`in `InfoMoviesCard` component, create a `div` element contained stars icons list and use `v-for` directive based on stars number.
+- `li`in `InfoMediaCard` component, create a `div` element contained stars icons list and use `v-for` directive based on stars number.
 
