@@ -79,4 +79,8 @@ We always round up to the next whole number, and we don’t handle half-full (or
 **- When hovering over a card, additional information that was previously fetched, along with the overview, appears.**
 
 - Edit in `InfoMediaCard` card style and added postres path instead of backDrop path
+- Edit the info in card: delete lengage and added overview item
+- Craete `isVisible` flag initial value `false` and using it create dinamically class to toggle `d-none` value in poster and card-info elements
+- Define a function `visibilityHandling` invert `isvisible` flag value.
+- Use `@mouseenter` and `@mouseleave` directive events in card-info element to call back `visibilityHandling` function
 

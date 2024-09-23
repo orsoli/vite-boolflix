@@ -2,7 +2,8 @@
 export default {
     data() {
         return {
-
+            // Variables
+            isVisible: false // Flag to do visible on hover
 
         };
     },
@@ -18,7 +19,7 @@ export default {
         },
         language: {
             type: String,
-            required: true
+            required: false
         },
         rates: {
             type: Number,
@@ -32,6 +33,10 @@ export default {
             type: String,
             required: true
         },
+        overView: {
+            type: String,
+            required: true
+        }
 
     },
 
@@ -40,33 +45,37 @@ export default {
     },
 
     methods: {
+        visibilityHandling() {
+            this.isVisible = !this.isVisible
+        }
 
     }
 };
 </script>
 
 <template>
-    <div class="card-info d-none">
-        <ul class="list-unstyled">
+    <div class="card-info overflow-x-scroll" @mouseenter="visibilityHandling" @mouseleave="visibilityHandling"
+        role="button">
+        <ul class="list-unstyled p-2" :class="{ 'd-none': !isVisible }">
             <li><strong>Title:</strong> {{ title }}</li>
             <li><strong>Original Title: </strong> {{ originalTitle }}</li>
-            <li>
-                <strong>Language:</strong> <span :class="`fi fi-${language}`"></span>
-                {{ language }}
-            </li>
             <li>
                 <div class="no-stars" v-if="rates === 0">
                     <p>No stars rating</p>
                 </div>
                 <div class="rating-star" v-else>
-                    <span><strong>Rates:</strong></span> <i class="bi bi-star-fill" v-for="i in Math.round(rates / 2)"
+                    <span><strong>Vote:</strong></span> <i class="bi bi-star-fill" v-for="i in Math.round(rates / 2)"
                         :key="i"></i>
                 </div>
             </li>
+            <li>
+                <strong>Overview: </strong>
+                <span class="overview">{{ overView }}</span>
+            </li>
         </ul>
-    </div>
-    <div class="poser">
-        <img :src="`${imageUrl}${backDropPath}`" :alt="`${originalTitle} cover`">
+        <div class="poser" :class="{ 'd-none': isVisible }">
+            <img :src="`${imageUrl}${backDropPath}`" :alt="`${originalTitle} cover`" role="button">
+        </div>
     </div>
 </template>
 
@@ -76,16 +85,28 @@ export default {
 @use "/node_modules/flag-icons/css/flag-icons.min.css";
 
 .card-info {
+    width: 200px;
+    height: 300px;
+    border: 1px solid white;
+    background-color: #000000;
 
     .bi-star-fill {
         color: goldenrod;
+        font-size: 14px;
+        margin: 2px;
     }
 
-}
+    img {
+        max-width: 100%;
+        height: 300px;
+    }
 
-img {
-    height: 300px;
-    border: 1px solid black;
-    border-radius: 5px;
+    strong {
+        font-size: 14px;
+    }
+
+    li {
+        font-size: 12px;
+    }
 }
 </style>
