@@ -9,9 +9,11 @@ With this call, you can search for all the movies related to a query. Pass query
 ### Milestone 0:
 **Design the application structure using props, custom events, and global state (store.js), based on the experience of previous exercises.**
 - Create components `<AppHeader />`, `<AppMain />`  and `<AppFooter />`.
+- Create `<SearchForm />` component
 - Create generic components: `<BaseInput />` and `<BaseButton />`
 - Import 3 macro components in `<App.vue />`
-- Import based components `<BaseInput />` and `<BaseButton />` in AppHeader
+- Import based components `<BaseInput />` and `<BaseButton />` in `SearchForm`
+- Import `<SearchForm />` in `AppHeader` component
 - Create `store.js` file to store variables globaly
 
 ### Milestone 1:
@@ -27,8 +29,8 @@ After the API response, we want to display the following values for each movie f
 
 **- Rating**
 
-- From `AppHeader` component call based components in `<template>` element and listen event emited from components
-- In `AppHeader` define functions to call Api and save info in `store.js` in events emited from `<BaseInput />` and `<BaseButton />`.
+- From `SearchForm` component call based components in `<template>` element and listen event emited from components
+- In `SearchForm` define functions to call Api and save info in `store.js` in events emited from `<BaseInput />` and `<BaseButton />`.
 - Create a component card `InfoMediaCard` to show dinamically info movies or series tv get info from props.
 - Create components to show list Movies and Series Tv: `MoviesListView` and `SeriesListView`.
 - Call `InfoMediaCard` component in `MoviesListView` and get the props dinamically get from `store.js`.
