@@ -12,9 +12,6 @@ export default {
     data() {
         return {
             // Variables
-            topRatedMoviesUrl: "https://api.themoviedb.org/3/movie/top_rated", // Top rated movies url
-
-            topRatedSeriesTvUrl: "https://api.themoviedb.org/3/tv/top_rated", // Top rated series Tv url
 
             store
         };
@@ -27,9 +24,9 @@ export default {
     methods: {
         // Call API to get Top Rate movie
         getTopRatedMovie() {
-            axios.get(this.topRatedMoviesUrl, {
+            axios.get(this.store.topRatedMoviesUrl, {
                 params: {
-                    api_key: "da70f1679892aee02a44255296352973",
+                    api_key: this.store.api_key,
                 }
             }).then((response) => {
                 store.searchedMovieResults = response.data.results // Store movie search results
@@ -44,9 +41,9 @@ export default {
 
         // Call API to get Top Rate Series Tv
         getTopRatedSeriesTv() {
-            axios.get(this.topRatedSeriesTvUrl, {
+            axios.get(this.store.topRatedSeriesTvUrl, {
                 params: {
-                    api_key: "da70f1679892aee02a44255296352973",
+                    api_key: this.store.api_key,
                 }
             }).then((response) => {
                 store.searchedSeriesTvResults = response.data.results // Store movie search results
@@ -80,7 +77,7 @@ export default {
                 <InfoMediaCard :title="searchedResult.title" :original-title="searchedResult.original_title"
                     :language="searchedResult.original_language" :rates="searchedResult.vote_average"
                     :back-drop-path="searchedResult.poster_path" :over-view="searchedResult.overview"
-                    :image-url="store.imageUrl" />
+                    :genre-id="searchedResult.genre_ids" :genres-objs="store.genreList" :image-url="store.imageUrl" />
             </div>
         </div>
     </div>
@@ -95,7 +92,7 @@ export default {
                 <InfoMediaCard :title="searchedResult.name" :original-title="searchedResult.original_name"
                     :language="searchedResult.original_language" :rates="searchedResult.vote_average"
                     :back-drop-path="searchedResult.poster_path" :over-view="searchedResult.overview"
-                    :image-url="store.imageUrl" />
+                    :genre-id="searchedResult.genre_ids" :genres-objs="store.genreList" :image-url="store.imageUrl" />
             </div>
         </div>
     </div>

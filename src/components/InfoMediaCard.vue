@@ -1,9 +1,13 @@
 <script>
+import { store } from '../js/store';
+
 export default {
     data() {
         return {
             // Variables
-            isVisible: false // Flag to do visible on hover
+            isVisible: false, // Flag to do visible on hover
+
+            store,
 
         };
     },
@@ -36,6 +40,14 @@ export default {
         overView: {
             type: String,
             required: true
+        },
+        genreId: {
+            type: Array,
+            // required: true
+        },
+        genresObjs: {
+            type: Array,
+            required: false
         }
 
     },
@@ -71,6 +83,19 @@ export default {
             <li>
                 <strong>Overview: </strong>
                 <span class="overview">{{ overView }}</span>
+            </li>
+            <li>
+                <strong>Actors: </strong>
+                <span class="overview"></span>
+            </li>
+            <li class="d-flex gap-2">
+                <strong>Genres: </strong>
+                <ul class="list-unstyled d-flex align-items-center flex-wrap">
+                    <li v-for="genre in genresObjs" :key="genre.id">
+                        <span class="overview p-1" v-if="genreId.includes(genre.id)"> {{ genre.name
+                            }} </span>
+                    </li>
+                </ul>
             </li>
         </ul>
         <div class="poser" :class="{ 'd-none': isVisible }">

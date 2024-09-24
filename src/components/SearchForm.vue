@@ -28,14 +28,14 @@ export default {
         // Call search Movie Api
         getSearchedMovieResults(inputValue) {
             this.searchValue = inputValue
-            axios.get(store.searchMovieUrl, {
+            axios.get(this.store.searchMovieUrl, {
                 params: {
-                    api_key: "da70f1679892aee02a44255296352973",
+                    api_key: this.store.api_key,
                     query: this.searchValue
                 }
             }).then((response) => {
-                store.searchedMovieResults = response.data.results // Store movie search results
-                console.log(store.searchedMovieResults); // Test print in console
+                this.store.searchedMovieResults = response.data.results // Store movie search results
+                console.log(this.store.searchedMovieResults); // Test print in console
             })
                 .catch((error) => {
                     console.log(error); // Print errors in console
@@ -48,14 +48,14 @@ export default {
         // Call Tv series Api
         getSearchedSeriesTvResults(inputValue) {
             this.searchValue = inputValue
-            axios.get(store.searchSeriesTvUrl, {
+            axios.get(this.store.searchSeriesTvUrl, {
                 params: {
-                    api_key: "da70f1679892aee02a44255296352973",
+                    api_key: this.store.api_key,
                     query: this.searchValue
                 }
             }).then((response) => {
-                store.searchedSeriesTvResults = response.data.results // Store movie search results
-                console.log(store.searchedSeriesTvResults); // Test print in console
+                this.store.searchedSeriesTvResults = response.data.results // Store movie search results
+                console.log(this.store.searchedSeriesTvResults); // Test print in console
             })
                 .catch((error) => {
                     console.log(error); // Print errors in console
@@ -65,10 +65,29 @@ export default {
                 });
         },
 
+        // Call Genre API
+        getGenreList() {
+            axios.get(this.store.genreUrl, {
+                params: {
+                    api_key: this.store.api_key
+                }
+            }).then((response) => {
+                this.store.genreList = response.data.genres // Store movie search results
+                console.log(this.store.genreList); // Test print in console
+            })
+                .catch((error) => {
+                    console.log(error); // Print errors in console
+                })
+                .finally(() => {
+                    console.log("Geting api Gener list") // Print message after api riturn results
+                });
+        },
+
         // Define a function to call back searched functions
         getSearchedResults(inputValue) {
             this.getSearchedMovieResults(inputValue)
             this.getSearchedSeriesTvResults(inputValue)
+            this.getGenreList()
         }
 
 

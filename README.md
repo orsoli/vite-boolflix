@@ -86,3 +86,12 @@ We always round up to the next whole number, and we don’t handle half-full (or
 - Define a function `visibilityHandling` invert `isvisible` flag value.
 - Use `@mouseenter` and `@mouseleave` directive events in card-info element to call back `visibilityHandling` function
 
+
+### Milestone 5 (Optional): 
+**Starting from a movie or a series, request from the API the actors who are part of the cast, adding to our Movie/Series card ONLY the first 5 returned by the API with their First Name and Last Name, as well as the genres associated with the movie using this format: “Genre 1, Genre 2, …”.**
+
+- Store url geners in `store.js`.
+- Create a variable to store the geners object in `store.js`.
+- In `SearchForm` call API to get gener objs and save in `store.js` varable
+- In `MediaCardList` when i call the `InfoMediaCard` component pass dinamically geners id of media list and the objects get from geners url
+- In `InfoMediaCard` add an element for gener names for every card based on id.
