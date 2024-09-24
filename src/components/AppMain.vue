@@ -1,7 +1,6 @@
 <script>
 // Import components
-import MoviesListView from './MoviesListView.vue';
-import SeriesTvListView from './SeriesTvListView.vue';
+import MediaCardsList from './MediaCardsList.vue';
 
 export default {
     data() {
@@ -11,8 +10,7 @@ export default {
     },
 
     components: {
-        MoviesListView,
-        SeriesTvListView,
+        MediaCardsList,
     },
 
     methods: {
@@ -23,8 +21,7 @@ export default {
 
 <template>
     <main class="text-white py-2">
-        <MoviesListView />
-        <SeriesTvListView />
+        <MediaCardsList />
     </main>
 </template>
 

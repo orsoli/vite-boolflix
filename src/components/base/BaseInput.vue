@@ -7,6 +7,8 @@ export default {
             // Declared variables
             inputResult: "", // Store the input search result
 
+            store
+
         };
     },
 

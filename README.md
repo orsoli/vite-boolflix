@@ -32,8 +32,8 @@ After the API response, we want to display the following values for each movie f
 - From `SearchForm` component call based components in `<template>` element and listen event emited from components
 - In `SearchForm` define functions to call Api and save info in `store.js` in events emited from `<BaseInput />` and `<BaseButton />`.
 - Create a component card `InfoMediaCard` to show dinamically info movies or series tv get info from props.
-- Create components to show list Movies and Series Tv: `MoviesListView` and `SeriesListView`.
-- Call `InfoMediaCard` component in `MoviesListView` and get the props dinamically get from `store.js`.
+- Create component to show list Movies and Series Tv: `MediaCardsList`.
+- Call `InfoMediaCard` component in `MediaCradsList` and pass the props dinamically get from `store.js`.
 
 ### Milestone 2:
 **Let’s transform the static language string into an actual flag of the corresponding country, managing the case where we don’t have the flag of the country returned by the API (flags are not available in FontAwesome).
