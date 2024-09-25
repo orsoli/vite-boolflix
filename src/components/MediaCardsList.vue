@@ -7,6 +7,7 @@ import axios from 'axios';
 
 // Import Components
 import InfoMediaCard from './InfoMediaCard.vue';
+import BaseSelect from './base/BaseSelect.vue';
 
 export default {
     data() {
@@ -19,6 +20,7 @@ export default {
 
     components: {
         InfoMediaCard,
+        BaseSelect
     },
 
     methods: {
@@ -30,6 +32,8 @@ export default {
                 }
             }).then((response) => {
                 store.searchedMovieResults = response.data.results // Store movie search results
+                console.log(store.searchedMovieResults); // Test print in console
+
             })
                 .catch((error) => {
                     console.log(error); // Print errors in console
@@ -47,14 +51,47 @@ export default {
                 }
             }).then((response) => {
                 store.searchedSeriesTvResults = response.data.results // Store movie search results
-                console.log(store.searchedMovieResults); // Test print in console
+                console.log(store.searchedSeriesTvResults); // Test print in console
             })
                 .catch((error) => {
                     console.log(error); // Print errors in console
                 })
                 .finally(() => {
-                    console.log("Geting api top rated Movies is finished") // Print message after api riturn results
+                    console.log("Geting api top rated SeriesTv is finished") // Print message after api riturn results
                 });
+        },
+
+        // Call Genre API
+        getGenreList() {
+            axios.get(this.store.genreUrl, {
+                params: {
+                    api_key: this.store.api_key
+                }
+            }).then((response) => {
+                this.store.genreList = response.data.genres // Store movie search results
+                console.log(this.store.genreList); // Test print in console
+            })
+                .catch((error) => {
+                    console.log(error); // Print errors in console
+                })
+                .finally(() => {
+                    console.log("Geting api Gener list") // Print message after api riturn results
+                });
+        },
+
+        // Call Api to get actress
+        getMovieActres(movieId) {
+            axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits`, {
+                params: {
+                    api_key: this.store.api_key,
+                }
+            }).then((response) => {
+                this.store.moviesCasts = response.data.cast
+                console.log(this.store.moviesCasts.slice(0, 5)) // Test console log
+            })
+                .catch((error) => {
+                    console.log(error); // Print errors in console
+                })
         },
 
     },
@@ -62,11 +99,16 @@ export default {
     created() {
         this.getTopRatedMovie()
         this.getTopRatedSeriesTv()
-    }
+        this.getGenreList()
+    },
 };
 </script>
 
 <template>
+    <!-- Select options section -->
+    <div class="container d-flex justify-content-end">
+        <BaseSelect @select-option="getGenreSelected" :opitions-list="this.store.genreList" />
+    </div>
     <!-- Movie section  -->
     <div class="container mb-5">
         <h1>

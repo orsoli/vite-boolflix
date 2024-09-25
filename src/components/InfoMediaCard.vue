@@ -48,6 +48,10 @@ export default {
         genresObjs: {
             type: Array,
             required: false
+        },
+        mediaCast: {
+            type: null,
+            required: false
         }
 
     },
@@ -86,7 +90,7 @@ export default {
             </li>
             <li>
                 <strong>Actors: </strong>
-                <span class="overview"></span>
+                <span class="overview" v-for="actor in mediaCast" :key="actor.id">{{ actor.name }}</span>
             </li>
             <li class="d-flex gap-2">
                 <strong>Genres: </strong>

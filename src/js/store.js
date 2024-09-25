@@ -6,6 +6,8 @@ export const store = reactive({
   searchedMovieResults: [], // Store searched Movie results
   searchedSeriesTvResults: [], // Store searched Tv results
   genreList: [], // Store Genre list object
+  moviesCasts: [], // Store movie's Actres list
+  seriesTvCasts: [], // Store series Actres list
   // Api Key
   api_key: "da70f1679892aee02a44255296352973",
   // Url's Variables

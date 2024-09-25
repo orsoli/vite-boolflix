@@ -92,6 +92,17 @@ We always round up to the next whole number, and we don’t handle half-full (or
 
 - Store url geners in `store.js`.
 - Create a variable to store the geners object in `store.js`.
-- In `SearchForm` call API to get gener objs and save in `store.js` varable
+- In `MediaCardList` call API to get gener objs and save in `store.js` varable
 - In `MediaCardList` when i call the `InfoMediaCard` component pass dinamically geners id of media list and the objects get from geners url
 - In `InfoMediaCard` add an element for gener names for every card based on id.
+- In `MediaCardList` call API's to get actres and return cast object
+- This cast returned from function pass as prop in `InfoMediaCard`
+- In `InfoMediaCard` add an element actres and dinamically add names of actres
+
+### Milestone 6 (Optional): 
+**Create a list of genres by requesting those available from the API, and create filters using TV and movie genres to show/hide the cards obtained from the search.**
+
+- Create a new base component `BaseSelect`.
+- Define a function to emit onchange event from select.
+- Use `genreList` variable to completed select options
+- `<BaseSelect />` call in `MediaCardList` component.

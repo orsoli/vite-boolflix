@@ -1,13 +1,9 @@
 <script>
-import { store } from '../../js/store';
-
 export default {
     data() {
         return {
             // Declared variables
             inputResult: "", // Store the input search result
-
-            store
 
         };
     },
